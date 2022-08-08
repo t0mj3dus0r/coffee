@@ -103,7 +103,7 @@ func (h HashSet[T]) RemoveAll(t []T) bool {
 
 func (h HashSet[T]) RetainAll(t []T) bool {
 
-	var existingElements []T
+	existingElements := make([]T, len(t))
 
 	for _, elem := range t {
 		if h.Contains(elem) {

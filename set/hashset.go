@@ -68,7 +68,7 @@ func (h HashSet[T]) Size() int {
 
 func (h HashSet[T]) ToArray() []T {
 
-	var result []T
+	result := make([]T, len(h.data))
 
 	for k := range h.data {
 		result = append(result, k)

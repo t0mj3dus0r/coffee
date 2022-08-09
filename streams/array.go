@@ -8,6 +8,12 @@ func FromArray[T any](array []T) coffee.Stream[T] {
 	}
 }
 
+func Empty[T any]() coffee.Stream[T] {
+	return arrayStream[T]{
+		data: make([]T, 0),
+	}
+}
+
 type arrayStream[T any] struct {
 	data []T
 }

@@ -4,7 +4,7 @@ import (
 	"github.com/t0mj3dus0r/coffee"
 )
 
-func GroupingBy[T, K comparable](classifier func(T) K) coffee.Collector[T, map[K][]T, map[K][]T] {
+func GroupingBy[T any, K comparable](classifier func(T) K) coffee.Collector[T, map[K][]T, map[K][]T] {
 	return groupingBy[T, K]{classifier: classifier}
 }
 

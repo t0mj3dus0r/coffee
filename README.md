@@ -12,10 +12,16 @@ This package aims to provide some utilities found in the Java standard library.
 - Predicate
 - Supplier
 - Optional
-- Streams
+- Stream
     - Array Stream
 - Collectors
     - Grouping By
+    - Joining
+- List
+    - ArrayList
+- Iterator
+- Iterable
+- Collection
 
 ## State
 Under active development.

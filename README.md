@@ -8,3 +8,7 @@ This package aims to provide some utilities found in the Java standard library.
 - BiConsumer
 - Predicate
 - Supplier
+- Streams
+    - Array Stream
+- Collectors
+    - Grouping By

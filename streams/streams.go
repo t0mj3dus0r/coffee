@@ -18,9 +18,10 @@ func Map[T, V any](stream coffee.Stream[T], mapper func(T) V) coffee.Stream[V] {
 func Collect[T, A, R any](stream coffee.Stream[T], collector coffee.Collector[T, A, R]) R {
 
 	container := collector.Supplier()()
+	accumulator := collector.Accumulator()
 
 	stream.ForEach(func(t T) {
-		collector.Accumulator()(container, t)
+		accumulator(container, t)
 	})
 
 	return collector.Finisher()(container)

@@ -15,4 +15,8 @@ type Stream[T any] interface {
 	Filter(predicate Predicate[T]) Stream[T]
 	// Performs an action for each element of this stream.
 	ForEach(action func(T))
+
+	Map(mapFn func(T) T) Stream[T]
+
+	ToList() []T
 }

@@ -86,3 +86,21 @@ func (s arrayStream[T]) ForEach(action func(T)) {
 		action(elem)
 	}
 }
+
+func (s arrayStream[T]) Map(mapFn func(T) T) coffee.Stream[T] {
+
+	mapped := make([]T, len(s.data))
+
+	for i, elem := range s.data {
+		mapped[i] = mapFn(elem)
+	}
+
+	return FromArray(mapped)
+}
+
+func (s arrayStream[T]) ToList() []T {
+
+	result := s.data
+
+	return result
+}

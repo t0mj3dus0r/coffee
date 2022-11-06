@@ -2,7 +2,6 @@ package optional
 
 import (
 	"github.com/t0mj3dus0r/coffee"
-	"github.com/t0mj3dus0r/coffee/streams"
 )
 
 func Of[T any](t T) coffee.Optional[T] {
@@ -105,13 +104,4 @@ func (o optionalImpl[T]) OrElsePanic() T {
 	}
 
 	panic("no value present in optional")
-}
-
-// If a value is present, returns a sequential Stream containing only that value, otherwise returns an empty Stream.
-func (o optionalImpl[T]) Stream() coffee.Stream[T] {
-	if o.IsPresent() {
-		return streams.FromArray([]T{o.data})
-	}
-
-	return streams.Empty[T]()
 }

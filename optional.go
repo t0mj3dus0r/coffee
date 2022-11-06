@@ -19,6 +19,4 @@ type Optional[T any] interface {
 	OrElseGet(supplier Supplier[T]) T
 	// If a value is present, returns the value, otherwise panics.
 	OrElsePanic() T
-	// If a value is present, returns a sequential Stream containing only that value, otherwise returns an empty Stream.
-	Stream() Stream[T]
 }

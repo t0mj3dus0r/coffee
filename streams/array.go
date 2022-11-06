@@ -1,6 +1,9 @@
 package streams
 
-import "github.com/t0mj3dus0r/coffee"
+import (
+    "github.com/t0mj3dus0r/coffee"
+    "github.com/t0mj3dus0r/coffee/optional"
+)
 
 func FromArray[T any](array []T) coffee.Stream[T] {
 	return arrayStream[T]{
@@ -103,4 +106,17 @@ func (s arrayStream[T]) ToList() []T {
 	result := s.data
 
 	return result
+}
+
+func (s arrayStream[T]) Reduce(accumulator coffee.BiFunction[T, T, T]) coffee.Optional[T] {
+    if s.Count() < 2 {
+        return optional.Empty[T]()
+    }
+
+    acc := s.data[0]
+    for i := 1;i < s.Count();i++ {
+        acc = accumulator(acc, s.data[i])
+    }
+
+    return optional.Of(acc)
 }

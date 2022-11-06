@@ -18,5 +18,8 @@ type Stream[T any] interface {
 
 	Map(mapFn func(T) T) Stream[T]
 
+    //Performs a reduction on the elements of this stream, using an associative accumulation function, and returns an Optional describing the reduced value, if any.
+    Reduce(accumulator BiFunction[T, T, T]) Optional[T]
+
 	ToList() []T
 }

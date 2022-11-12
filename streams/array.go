@@ -109,7 +109,7 @@ func (s arrayStream[T]) ToList() []T {
 }
 
 func (s arrayStream[T]) Reduce(accumulator coffee.BiFunction[T, T, T]) coffee.Optional[T] {
-    if s.Count() < 2 {
+    if s.Count() == 0 {
         return optional.Empty[T]()
     }
 

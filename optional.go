@@ -3,6 +3,8 @@ package coffee
 type Optional[T any] interface {
 	// If a value is present, and the value matches the given predicate, returns an Optional describing the value, otherwise returns an empty Optional.
 	Filter(predicate Predicate[T]) Optional[T]
+	// If a value is present, returns the value, otherwise panics.
+	Get() T
 	// If a value is present, performs the given action with the value, otherwise does nothing.
 	IfPresent(action Consumer[T])
 	// If a value is present, performs the given action with the value, otherwise performs the given empty-based action.

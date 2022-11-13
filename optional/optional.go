@@ -44,6 +44,14 @@ func (o optionalImpl[T]) Filter(predicate coffee.Predicate[T]) coffee.Optional[T
 	return Empty[T]()
 }
 
+// If a value is present, returns the value, otherwise panics.
+func (o optionalImpl[T]) Get() T {
+	if o.IsEmpty() {
+		panic("tried to get value of an empty optional")
+	}
+	return o.data
+}
+
 // If a value is present, performs the given action with the value, otherwise does nothing.
 func (o optionalImpl[T]) IfPresent(action coffee.Consumer[T]) {
 	if o.IsPresent() {
